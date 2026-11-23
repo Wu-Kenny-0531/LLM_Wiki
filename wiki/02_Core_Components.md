@@ -26,3 +26,10 @@ flowchart LR
 ## 3. 互動機制 (Interaction Rules)
 - **定義**：代理人與鄰近代理人、以及代理人與環境之間交換物資、資訊的通訊與博弈協議 [Source 1]。
 - **在地性原則 (Locality Principle)**：在傳統 ABM 中，互動幾乎都是局部的（如 Moore 鄰域 8 格或 von Neumann 鄰域 4 格），宏觀現象是由局部的微小漣漪交織疊加而成 [Source 1]。
+
+
+## 經典三要素實例映射：謝林隔離模型
+以謝林模型為例，三要素具體體現為 [Source 2]：
+- **Agent**：具有族群標籤（紅/藍）與滿意度門檻 $T$（如 30%）的虛擬居民 [Source 2]。
+- **Environment**：離散的二維方格網格（棋盤），包含佔用格與隨機空位 [Source 2]。
+- **Interaction**：觀察周圍相鄰 8 格（Moore 鄰域）的同類比例；若滿意則安居，不滿意則隨機搬遷至空位 [Source 2]。
