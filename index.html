@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>當大語言模型遇見社會模擬：Agent-Based Modeling 的新典範</title>
+  <title>從微觀個體到宏觀奇蹟：代理人基模型 (ABM) 導論</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0f19;
-      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-bg: rgba(30, 41, 59, 0.75);
       --card-border: rgba(255, 255, 255, 0.1);
       --primary: #38bdf8;
       --primary-glow: rgba(56, 189, 248, 0.25);
@@ -22,14 +22,10 @@
       --text-muted: #94a3b8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
@@ -41,9 +37,8 @@
         radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.12) 0px, transparent 50%);
     }
 
-    /* Top Navigation / Progress */
     header {
-      padding: 16px 28px;
+      padding: 12px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -59,7 +54,6 @@
       font-weight: 700;
       font-size: 1.05rem;
       color: var(--primary);
-      letter-spacing: -0.02em;
     }
 
     .brand-badge {
@@ -84,7 +78,7 @@
     .progress-bar {
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
-      width: 10%;
+      width: 12.5%;
       transition: width 0.3s ease;
     }
 
@@ -95,14 +89,13 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Main Presentation Stage */
     main {
       flex: 1;
       display: flex;
       position: relative;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 20px;
     }
 
     .slide {
@@ -112,10 +105,10 @@
       opacity: 0;
       pointer-events: none;
       transform: translateY(20px) scale(0.98);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
     .slide.active {
@@ -129,82 +122,45 @@
       align-items: center;
       gap: 6px;
       color: var(--primary);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      text-transform: uppercase;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .slide-title {
-      font-size: 2.2rem;
+      font-size: 2.1rem;
       font-weight: 800;
       line-height: 1.25;
-      letter-spacing: -0.03em;
-      background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 100%);
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .slide-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 8px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 8px;
-    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 22px;
+      border-radius: 14px;
+      padding: 20px;
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s, border-color 0.2s;
+      gap: 10px;
     }
 
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
-    .card-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .card-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .card-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .card-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
 
     .badge {
       display: inline-block;
@@ -219,54 +175,74 @@
     .badge-warning { background: rgba(251, 191, 36, 0.15); color: var(--warning); }
     .badge-danger { background: rgba(248, 113, 113, 0.15); color: var(--danger); }
 
-    /* Interactive Code / Formula Box */
-    .formula-box {
-      background: #0f172a;
-      border: 1px dashed rgba(56, 189, 248, 0.4);
-      border-radius: 12px;
-      padding: 16px 20px;
-      font-family: monospace;
-      font-size: 0.95rem;
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* Interactive Simulation Canvas / Demo */
-    .sim-arena {
-      background: #020617;
+    /* Schelling Simulation Interactive Canvas */
+    .schelling-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+      background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--card-border);
       border-radius: 14px;
-      padding: 18px;
+      padding: 16px;
+      align-items: center;
+    }
+
+    .sim-controls {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .agent-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(30, 41, 59, 0.9);
-      padding: 6px 12px;
-      border-radius: 8px;
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
       font-size: 0.85rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
     }
 
-    .chat-bubble {
-      background: rgba(56, 189, 248, 0.1);
-      border-left: 3px solid var(--primary);
-      padding: 10px 14px;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.9rem;
-      line-height: 1.5;
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
     }
 
-    /* Bottom Controls */
+    .sim-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-val { font-size: 1.15rem; font-weight: 700; color: var(--primary); }
+    .stat-lbl { font-size: 0.72rem; color: var(--text-muted); }
+
+    .canvas-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas#schellingCanvas {
+      background: #020617;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
     footer {
-      padding: 14px 28px;
+      padding: 12px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -275,18 +251,26 @@
       z-index: 10;
     }
 
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
+    .wiki-source-tag {
+      font-size: 0.8rem;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
     }
+
+    .nav-buttons { display: flex; gap: 8px; }
 
     button {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--card-border);
       color: var(--text);
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -301,18 +285,7 @@
       border-color: var(--primary);
     }
 
-    button:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    .key-hint {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    button:disabled { opacity: 0.3; cursor: not-allowed; }
 
     kbd {
       background: rgba(255, 255, 255, 0.1);
@@ -320,32 +293,23 @@
       border-radius: 4px;
       padding: 2px 6px;
       font-size: 0.72rem;
-      font-family: inherit;
-    }
-
-    .wiki-ref {
-      font-size: 0.8rem;
-      color: var(--primary);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
     }
 
     @media (max-width: 768px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .slide-title { font-size: 1.6rem; }
+      .schelling-container { grid-template-columns: 1fr; }
+      .slide-title { font-size: 1.5rem; }
       .progress-container { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Header -->
+  <!-- Top Navigation Header -->
   <header>
     <div class="brand">
-      <span>🤖 LLM-based ABM</span>
-      <span class="brand-badge">教學簡報</span>
+      <span>🌐 代理人基模型 (ABM)</span>
+      <span class="brand-badge">教學型互動簡報</span>
     </div>
 
     <div class="progress-container">
@@ -353,322 +317,268 @@
     </div>
 
     <div class="slide-counter">
-      <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">9</span>
+      <span id="currentSlideNum">1</span> / <span id="totalSlidesNum">8</span>
     </div>
   </header>
 
-  <!-- Presentation Stage -->
+  <!-- Presentation Slides -->
   <main>
 
-    <!-- Slide 1: Cover -->
+    <!-- Slide 1: Introduction -->
     <section class="slide active" data-index="1">
-      <span class="slide-tag">Interactive Lecture</span>
-      <h1 class="slide-title">當大語言模型遇見社會模擬<br>Agent-Based Modeling 的新典範</h1>
-      <p class="slide-subtitle">從個體的「記憶、反思、規劃」到虛擬小鎮的「群體社會湧現」—— 帶你用最直覺的方式看懂計算社會科學的未來。</p>
-      
-      <div class="grid-3" style="margin-top: 14px;">
-        <div class="card">
-          <div class="card-icon">🏛️</div>
-          <div class="card-title">知識來源</div>
-          <div class="card-desc">全篇基於本專案之 <strong>LLM Wiki 知識庫</strong>，萃取自 Stanford、Google 與頂尖學術 Survey。</div>
-          <a class="wiki-ref" href="https://github.com" target="_blank">來源：wiki/synthesis/LLM-Agent-Based-Modeling.md</a>
-        </div>
-        <div class="card">
-          <div class="card-icon">🧠</div>
-          <div class="card-title">微觀認知突破</div>
-          <div class="card-desc">解決 LLM 記憶短暫問題，透過記憶串流與反思樹賦予角色長久穩定的個人性格。</div>
-          <span class="badge badge-accent">Park et al. (UIST '23)</span>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <div class="card-title">宏觀群體湧現</div>
-          <div class="card-desc">25 位居民自主聊天、傳播八卦、相約籌辦情人節派對，展現非預先腳本化的社會行為。</div>
-          <span class="badge badge-primary">Smallville Sandbox</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 2: Traditional ABM vs Limitations -->
-    <section class="slide" data-index="2">
-      <span class="slide-tag">Problem Statement</span>
-      <h2 class="slide-title">什麼是 ABM？傳統模擬面臨什麼死穴？</h2>
-      <p class="slide-subtitle">Agent-Based Modeling（代理人基模型）是一種由微觀個體出發，觀察宏觀現象自發「湧現」的科學方法。</p>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="badge badge-warning">傳統 ABM (40 年的歷史困境)</div>
-          <div class="card-title">規則死板、無法處理語言與常識</div>
-          <div class="card-desc">
-            • <strong>硬編碼規則 (if-else / 狀態機)</strong>：開發者必須手寫所有反應，遇到腳本外的狀況角色直接僵死。<br>
-            • <strong>過度簡化的人性</strong>：過去的角色只有「飢餓度: 70、金錢: 50」等數值標籤，無法理解「同情、猜忌、政治理想」等複雜心智。<br>
-            • <strong>溝通缺失</strong>：只能傳遞數值訊號，無法進行自然語言交談。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge badge-danger">直接套用純 ChatGPT 的陷阱</div>
-          <div class="card-title">記憶金魚腦、缺乏長期連貫性</div>
-          <div class="card-desc">
-            • <strong>單輪對話合理，長期作息崩潰</strong>：直接給 Prompt，LLM 可以在當下表現像真人，但過了一小時它會忘記剛吃過飯，再度跑去吃午餐。<br>
-            • <strong>上下文視窗限制</strong>：無法將幾天幾週以來發生的所有瑣事一次塞進 Prompt，歷史被硬生生截斷。<br>
-            • <strong>需要專門的「外掛心智架構」</strong>！
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 3: Tripartite Architecture -->
-    <section class="slide" data-index="3">
-      <span class="slide-tag">Foundational Architecture</span>
-      <h2 class="slide-title">解剖現代 AI Agent：經典三元架構</h2>
-      <p class="slide-subtitle">復旦大學全景綜述（Xi et al., 2023）確立了現代代理人的標準生理學結構：Brain - Perception - Action。</p>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8;">🧠</div>
-          <span class="badge badge-primary">中央處理器</span>
-          <div class="card-title">大腦 (Brain)</div>
-          <div class="card-desc">
-            <strong>由 LLM 核心驅動：</strong><br>
-            • 知識儲存（先驗常識）<br>
-            • 記憶管理（長短期經歷檢索）<br>
-            • 推理與決策（思維鏈 CoT）<br>
-            • 自頂向下任務規劃與反思
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-icon" style="background: rgba(52, 211, 153, 0.2); color: #34d399;">👁️</div>
-          <span class="badge badge-accent">感官系統</span>
-          <div class="card-title">感知 (Perception)</div>
-          <div class="card-desc">
-            <strong>捕捉多模態環境信號：</strong><br>
-            • 自然語言文字指令<br>
-            • 視覺與空間座標（如 ViT / 3D 拓撲）<br>
-            • 聽覺與聲音轉譯<br>
-            • 感知周遭代理人與物體狀態
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-icon" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24;">🦾</div>
-          <span class="badge badge-warning">肢體與工具</span>
-          <div class="card-title">行動 (Action)</div>
-          <div class="card-desc">
-            <strong>具體對環境施加改變：</strong><br>
-            • <strong>語言輸出</strong>：與他人對話與演講<br>
-            • <strong>工具調用</strong>：計算機、搜尋引擎<br>
-            • <strong>具身操作</strong>：在空間中走動、開關瓦斯爐、打掃房間
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 4: Memory Stream & Triad -->
-    <section class="slide" data-index="4">
-      <span class="slide-tag">Core Innovation</span>
-      <h2 class="slide-title">虛擬小鎮的靈魂：記憶串流與三維檢索</h2>
-      <p class="slide-subtitle">Stanford 團隊為 Smallville 居民設計的關鍵機制：如何從成千上萬的經歷中喚起當下最重要的記憶？</p>
-
-      <div class="card" style="margin-bottom: 12px;">
-        <div class="formula-box">
-          <span>Retrieval Score = α<sub>新鮮度</sub> · Recency + α<sub>重要度</sub> · Importance + α<sub>相關度</sub> · Relevance</span>
-          <span class="badge badge-primary">Park et al. 核心公式</span>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-title">⏳ 1. 新鮮度 (Recency)</div>
-          <div class="card-desc">
-            採用指數衰減函數 <code>0.995<sup>Δt</sup></code>。<br>
-            剛發生的事情（如幾分鐘前的對話）權重最高，隨時間推移自然淡化，符合人類注意力曲線。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">⭐ 2. 重要度 (Importance)</div>
-          <div class="card-desc">
-            在記憶產生瞬間，由 LLM 評估 1~10 分。<br>
-            例如「早上刷牙」給 2 分，但「告白成功」或「得知競選市長」給 8~9 分，永不被輕易拋棄。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">🎯 3. 相關度 (Relevance)</div>
-          <div class="card-desc">
-            透過文字嵌入向量（Embedding）比對當前場景情境的餘弦相似度。<br>
-            討論化學作業時，自動過濾掉早餐內容，只提取學業相關記憶。
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 5: Reflection Tree -->
-    <section class="slide" data-index="5">
-      <span class="slide-tag">Cognitive Leap</span>
-      <h2 class="slide-title">從記錄到領悟：反思樹 (Reflection Tree)</h2>
-      <p class="slide-subtitle">如果只有記憶串流，代理人只是錄音筆；「反思機制」讓代理人學會概括歸納出自己的價值觀與信念。</p>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="badge badge-danger">沒有反思機制的後果</div>
-          <div class="card-title">「只能看到表面，無法理解真心」</div>
-          <div class="card-desc">
-            <strong>實驗實測：</strong><br>
-            當問居民 Klaus：「你想和誰一起度過下午？」<br>
-            無反思的 Klaus 只會數次數，選擇打招呼次數最多的點頭之交 Wolfgang；完全無法體會誰才是真正聊得來的朋友。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge badge-accent">引入反思機制後的升級</div>
-          <div class="card-title">自動由下而上提煉抽象信念</div>
-          <div class="card-desc">
-            1. <strong>累積重要度滿 150 分</strong> $\to$ 觸發反思。<br>
-            2. 向自身提問：「從最近的對話中，我可以得出什麼洞察？」<br>
-            3. 歸納出：「Maria 也熱愛研究，我們有共同話題！」<br>
-            4. 決策升級：Klaus 選擇邀請 Maria，展現深層情感聯結！
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 6: Valentine's Party Emergence -->
-    <section class="slide" data-index="6">
-      <span class="slide-tag">Social Emergence</span>
-      <h2 class="slide-title">震撼社會現象：情人節派對自主湧現</h2>
-      <p class="slide-subtitle">沒有任何中心化排程器，單靠一個「我想辦派對」的念頭，小鎮居民如何自發協調？</p>
-
-      <div class="sim-arena">
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <div class="agent-pill">👩‍🍳 <strong>Isabella</strong> (發起人)</div>
-          <div class="agent-pill">🎨 <strong>Maria</strong> (好友/暗戀 Klaus)</div>
-          <div class="agent-pill">📚 <strong>Klaus</strong> (受邀者)</div>
-          <div class="agent-pill">💊 <strong>John Lin</strong> (傳播者)</div>
-        </div>
-
-        <div class="chat-bubble">
-          <strong>初始種子指令：</strong> 使用者僅在 Isabella 的記憶中寫入一句話：「我想在 2 月 14 日下午 5 點在 Hobbs 咖啡廳辦一場情人節派對。」
-        </div>
-
-        <div class="grid-3" style="margin-top: 4px;">
-          <div class="card" style="padding: 14px; background: rgba(15, 23, 42, 0.6);">
-            <strong style="color: var(--primary);">📢 資訊擴散 (52%)</strong>
-            <p class="card-desc" style="font-size: 0.85rem;">Isabella 告訴了顧客，顧客在藥局買藥時聊開，短短兩天內半數以上居民都知道派對消息。</p>
-          </div>
-          <div class="card" style="padding: 14px; background: rgba(15, 23, 42, 0.6);">
-            <strong style="color: var(--accent);">❤️ 關係演進 (0.167 → 0.74)</strong>
-            <p class="card-desc" style="font-size: 0.85rem;">Maria 鼓起勇氣邀請了暗戀的 Klaus 作為舞伴，Klaus 開心地答應赴約，社交密度翻了 4 倍。</p>
-          </div>
-          <div class="card" style="padding: 14px; background: rgba(15, 23, 42, 0.6);">
-            <strong style="color: var(--warning);">🎉 群體協調 (準時出席)</strong>
-            <p class="card-desc" style="font-size: 0.85rem;">2 月 14 日下午 5 點，5 位居民各自調整全天作息，準時現身咖啡廳慶祝，湧現群體自組織！</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 7: Properties of Agent Society -->
-    <section class="slide" data-index="7">
-      <span class="slide-tag">Society Ontology</span>
-      <h2 class="slide-title">代理人社會的四大基石特徵</h2>
-      <p class="slide-subtitle">要支撐大規模且穩定的社會模擬，復旦大學 Survey 提出了不可或缺的四大環境本體性：</p>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title">🌐 1. 開放性 (Open)</div>
-          <div class="card-desc">
-            代理人可以動態進出社會，環境可自由外掛新工具與 API；人類也能以「鎮民」或「內心聲音」直接介入干預模擬。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">⏳ 2. 持久性 (Persistent)</div>
-          <div class="card-desc">
-            記憶與人際關係是持續積累的，社會結構隨著時間推移不斷沉澱，打破了單輪聊天機器人「重置即歸零」的困境。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">📍 3. 情境具身性 (Situated)</div>
-          <div class="card-desc">
-            角色深植於特定地理與空間中，感知受限於視野與距離（隔壁房的動靜看不見），保證了決策的客觀物理合理性。
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">⚖️ 4. 組織秩序性 (Organized)</div>
-          <div class="card-desc">
-            具備社會規範、分工職責（SOP）與獎懲邊界，引導群體從個體微觀決策邁向井然有序的集體協作。
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 8: Adversarial Debate & Pitfalls -->
-    <section class="slide" data-index="8">
-      <span class="slide-tag">Safety & Reflection</span>
-      <h2 class="slide-title">最大出錯陷阱：幻覺滾雪球與對抗破局</h2>
-      <p class="slide-subtitle">在多代理人模擬中，最危險的失敗模式是什麼？我們如何透過流程設計（Graph / Loop）來克服？</p>
-
-      <div class="grid-2">
-        <div class="card">
-          <div class="badge badge-danger">致命痛點：幻覺滾雪球 (Amplification)</div>
-          <div class="card-title">群體群盲現象 (Groupthink)</div>
-          <div class="card-desc">
-            當多個 Agent 自由交談時，一旦某個角色無意中捏造了一個虛假事實（如錯認歷史事件），其他 Agent 會<strong>將此謊言當作真理存入記憶串流並繼續推演</strong>，造成整座社會網絡集體深信不疑！
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="badge badge-accent">解法：引入對抗辯論 (Adversarial Debate)</div>
-          <div class="card-title">針鋒相對，互挑毛病以求真</div>
-          <div class="card-desc">
-            • <strong>跳脫一味迎合</strong>：打破 LLM 過度客氣（Too Agreeable）的軟肋。<br>
-            • <strong>Gatekeeper 查核點</strong>：在資訊存入長期記憶前，指派獨立的 Critic 檢查矛盾。<br>
-            • <strong>正是本作業「先檢查、後生成」Loop 的設計精髓！</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Slide 9: Conclusion & Wiki Linkage -->
-    <section class="slide" data-index="9">
-      <span class="slide-tag">Conclusion & Future</span>
-      <h2 class="slide-title">結語：計算社會科學的全新未來</h2>
-      <p class="slide-subtitle">LLM-based ABM 不僅是遊戲開發的利器，更是人類預演未來政策、經濟與傳播現象的數位雙生實驗室。</p>
+      <span class="slide-tag">Lecture 01 • Introduction</span>
+      <h1 class="slide-title">從微觀個體到宏觀奇蹟：<br>代理人基模型 (ABM) 導論</h1>
+      <p class="slide-subtitle">如何用最簡單的微觀規則，在電腦中「培育」出豐富複雜的社會秩序？</p>
 
       <div class="grid-3" style="margin-top: 10px;">
         <div class="card">
-          <div class="card-title">🔍 人類的角色</div>
-          <div class="card-desc">人類不再需要為每個角色寫腳本，轉而成為「架構師」與「提問者」，設定初始世界與倫理邊界。</div>
+          <div class="card-title">🌱 自底向上思想 (Bottom-up)</div>
+          <div class="card-desc">就像園藝一樣，我們不需要手繪整座花園的宏觀藍圖，只需播下具備自主規則的種子，讓系統自然生長。</div>
         </div>
         <div class="card">
-          <div class="card-title">📈 應用的拓展</div>
-          <div class="card-desc">從虛擬小鎮擴展至總體經濟預測（EconAgent）、一戰國際局勢推演（WarAgent）與社群同溫層研究。</div>
+          <div class="card-title">🔬 計算實驗室</div>
+          <div class="card-desc">在不傷害真實社會的前提下，透過調控微觀參數，無害化預演金融海嘯、疫情擴散與政策衝擊。</div>
         </div>
         <div class="card">
-          <div class="card-title">📚 本 Wiki 知識庫</div>
-          <div class="card-desc">隨時點進本儲存庫的 <code>wiki/</code> 資料夾，探索每篇精讀筆記、概念本體與歷史演進圖譜！</div>
+          <div class="card-title">💡 生成式解釋</div>
+          <div class="card-desc">「如果你無法在電腦裡培育它，你就沒有真正解釋它。」—— Joshua Epstein</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Problem of Traditional Equations -->
+    <section class="slide" data-index="2">
+      <span class="slide-tag">Lecture 02 • Paradigm Shift</span>
+      <h2 class="slide-title">為什麼傳統宏觀公式無法看懂真實社會？</h2>
+      <p class="slide-subtitle">2008 年金融海嘯中，少數邊緣機構的違約引爆了全球崩盤，傳統代表性方程式模型對此束手無策。</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge badge-warning">傳統方程式模型的盲點</div>
+          <div class="card-title">虛幻的「同質全知理性人」假設</div>
+          <div class="card-desc">
+            • <strong>代表性個體</strong>：假設社會是由一群完全一樣的「平均人」構成，抹殺了真實世界的個體差異。<br>
+            • <strong>超理性運算</strong>：假設每個人都能算遍全宇宙求得「全局最優解」，無視人類心智與資訊的局限。<br>
+            • <strong>均勻混合 (Well-mixed)</strong>：忽視人際地理與社交網絡的剛性空間限制。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="badge badge-accent">ABM 的現實主義解法</div>
+          <div class="card-title">有限理性與「滿意化」原則</div>
+          <div class="card-desc">
+            • <strong>生活生動比喻（買早餐）</strong>：我們買早餐不會算遍全台北每家店的 CP 值極值；只要樓下三明治「夠好吃且不用排隊」，決策立刻終止（Satisficing 原則）。<br>
+            • <strong>擁抱異質性</strong>：在 ABM 中，世界上不存在兩個一模一樣的人，每個人擁有不同的偏好與人脈。<br>
+            • <strong>局部視野</strong>：代理人僅觀察身邊鄰近動靜，資訊透過時間空間逐步擴散。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Core Components -->
+    <section class="slide" data-index="3">
+      <span class="slide-tag">Lecture 03 • Architecture</span>
+      <h2 class="slide-title">積木遊戲：ABM 核心三要素</h2>
+      <p class="slide-subtitle">就像玩《模擬市民》或大富翁，整個計算世界由三塊基石拼裝而成：代理人、環境與互動機制。</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge badge-primary">微觀主角</span>
+          <div class="card-title">1. 代理人 (Agent)</div>
+          <div class="card-desc">
+            具有自主意識的運作單元：<br>
+            • <strong>內部狀態</strong>：位置座標、財富、健康、門檻偏好。<br>
+            • <strong>決策規則</strong>：如「若同族鄰居不足則搬家」的啟發式邏輯。
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-accent">時空舞台</span>
+          <div class="card-title">2. 環境 (Environment)</div>
+          <div class="card-desc">
+            代理人生存的空間媒介：<br>
+            • <strong>空間型態</strong>：離散網格棋盤（Lattice）、連續物理幾何空間、或抽象社群網路拓撲。<br>
+            • <strong>動態資源</strong>：資源生長、障礙物阻隔。
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="badge badge-warning">網絡連結</span>
+          <div class="card-title">3. 互動 (Interaction)</div>
+          <div class="card-desc">
+            個體與環境及鄰里的通訊：<br>
+            • <strong>在地性原則</strong>：代理人僅能與其視野內（Moore 鄰域 8 格）的鄰居互動。<br>
+            • <strong>回饋機制</strong>：個體決策改變局部，漣漪疊加為宏觀。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Schelling Segregation Interactive Canvas -->
+    <section class="slide" data-index="4">
+      <span class="slide-tag">Lecture 04 • Interactive Lab</span>
+      <h2 class="slide-title">經典案例：謝林隔離模型與動態模擬</h2>
+      <p class="slide-subtitle">諾貝爾獎得主 Thomas Schelling 證明：微觀極其寬容的偏好，宏觀竟會湧現出極端隔離！</p>
+
+      <div class="schelling-container">
+        <div class="sim-controls">
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>同類鄰居門檻 (Tolerance)</span>
+              <strong id="thresholdVal" style="color: var(--primary);">30%</strong>
+            </div>
+            <input type="range" id="thresholdSlider" min="10" max="75" value="30">
+            <p style="font-size: 0.75rem; color: var(--text-muted);">
+              只要身邊有 30% 同色鄰居就滿意（70% 不同色也完全能接受，代表非常寬容）。
+            </p>
+          </div>
+
+          <div class="sim-stats">
+            <div class="stat-box">
+              <div class="stat-val" id="statSatisfied">0%</div>
+              <div class="stat-lbl">居民滿意度</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" id="statSegregation">0%</div>
+              <div class="stat-lbl">宏觀隔離指數</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-top: 6px;">
+            <button id="startBtn" onclick="startSim()" style="flex: 1; justify-content: center; background: var(--primary); color: #0b0f19;">開始模擬</button>
+            <button onclick="resetSim()" style="justify-content: center;">重置</button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="schellingCanvas" width="300" height="300"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5: Emergence -->
+    <section class="slide" data-index="5">
+      <span class="slide-tag">Lecture 05 • Core Magic</span>
+      <h2 class="slide-title">複雜系統的靈魂：什麼是「湧現」？</h2>
+      <p class="slide-subtitle">整體大於部分之和：宏觀結構既不存在於單一個體內，也無法由個體簡單線性相加得出。</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">🌊 1. 水分子與漩渦</div>
+          <div class="card-desc">
+            單個水分子只有 H₂O 化學結構，完全沒有「潮濕」或「漩渦」的性質；但數億個水分子相互碰撞流動時，自然湧現出壯觀的漩渦與海浪。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🧠 2. 神經元與大腦意識</div>
+          <div class="card-desc">
+            單個神經細胞只有簡單的電位脈衝與突觸傳遞；但數百億個神經元交織成網絡，便湧現出思想、記憶、情緒與人類意識。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🦅 3. 鳥群飛翔 (Boids)</div>
+          <div class="card-desc">
+            沒有任何「隊長鳥」指揮，每隻鳥只需遵守「不撞同伴、對齊速度、靠攏群聚」三條極簡規則，便自發湧現出空中整齊曼妙的避障編隊。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 6: Non-linearity & Heterogeneity -->
+    <section class="slide" data-index="6">
+      <span class="slide-tag">Lecture 06 • Dynamics</span>
+      <h2 class="slide-title">非線性反饋與個體多樣性的力量</h2>
+      <p class="slide-subtitle">打破線性直覺：為什麼在複雜系統中，微小的火花會引爆天翻地覆的連鎖雪崩？</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge badge-warning">非線性 (Non-linearity)</div>
+          <div class="card-title">臨界點 (Tipping Points) 與蝴蝶效應</div>
+          <div class="card-desc">
+            • <strong>非正比關係</strong>：投入兩倍努力不等於獲得兩倍產出。<br>
+            • <strong>生活生動比喻（森林大火）</strong>：幾百個微小火星可能被自然撲滅，看似風平浪靜；但一旦乾燥度跨過臨界門檻，下一個微小火星會瞬間引爆整座森林大火！<br>
+            • <strong>正回饋循環</strong>：恐慌性拋售與謝林搬家骨牌效應，迅速將系統推向極化。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="badge badge-accent">異質性 (Heterogeneity)</div>
+          <div class="card-title">多樣性是系統具備抗脆弱性的源泉</div>
+          <div class="card-desc">
+            • <strong>生活生動比喻（股市生態）</strong>：如果市場上每個人都是同質的「理性複製人」，一旦有利空所有人同一微秒搶著賣，市場瞬間猝死；正因為有人看空、有人貪婪逢低承接，分歧才促成了交易與流動性。<br>
+            • <strong>Sugarscape 糖原模型</strong>：代理人天生的視力與代謝率差異，在無人為干預下自然湧現出貧富不平等的帕雷托分佈。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: Traditional ABM vs LLM Agent -->
+    <section class="slide" data-index="7">
+      <span class="slide-tag">Lecture 07 • Frontier Boundaries</span>
+      <h2 class="slide-title">極簡規則個體 vs. 語言智慧大腦：嚴格邊界</h2>
+      <p class="slide-subtitle">在學術與教學中，切勿將傳統 ABM 代理人與現代 LLM Agent（如 AutoGPT）混為一談！</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge badge-primary">傳統 ABM 代理人 (如謝林模型)</div>
+          <div class="card-title">極簡規則為榮 (Heuristic Rules)</div>
+          <div class="card-desc">
+            • <strong>決策核心</strong>：簡潔的數學或邏輯判斷 <code>if ratio < T: move()</code>。<br>
+            • <strong>能力特徵</strong>：不會說話、沒有常識、不能調用工具，更不會思考。<br>
+            • <strong>學術追求</strong>：個體越簡單，湧現出的宏觀結構越複雜，模型就越偉大。
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="badge badge-warning">現代 LLM Agent (如 AutoGPT, MetaGPT)</div>
+          <div class="card-title">通用認知與工具執行</div>
+          <div class="card-desc">
+            • <strong>決策核心</strong>：以大語言模型（如 GPT-4）為大腦，具備思維鏈 (CoT)。<br>
+            • <strong>能力特徵</strong>：流暢的自然語言理解、工具調用、長期記憶檢索。<br>
+            • <strong>學術追求</strong>：利用強大心智自主完成複雜工程任務。<br>
+            • <strong>現代融合</strong>：生成式代理人（Generative Agents）正在將 LLM 作為大腦注入傳統 ABM，開啟社會模擬新紀元。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Conclusion -->
+    <section class="slide" data-index="8">
+      <span class="slide-tag">Lecture 08 • Summary</span>
+      <h2 class="slide-title">結語：培育未來的計算實驗室</h2>
+      <p class="slide-subtitle">從微觀簡單規則的碰撞，看見宏觀社會結構的演變；這正是代理人基模型的永恆魅力。</p>
+
+      <div class="grid-3" style="margin-top: 8px;">
+        <div class="card">
+          <div class="card-title">🌱 自底向上</div>
+          <div class="card-desc">不依賴僵化的全域方程，讓代理人在局部互動中自然湧現秩序與臨界突變。</div>
+        </div>
+        <div class="card">
+          <div class="card-title">⚖️ 政策新視野</div>
+          <div class="card-desc">謝林模型告誡決策者：宏觀的極端結果不等於微觀的極端意圖，避免線性思維的誤判。</div>
+        </div>
+        <div class="card">
+          <div class="card-title">📚 探索本 Wiki</div>
+          <div class="card-desc">本簡報的每個知識點均源自儲存庫中的 <code>wiki/*.md</code> 筆記，歡迎深入查閱！</div>
         </div>
       </div>
 
-      <div class="card" style="margin-top: 12px; background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.3);">
+      <div class="card" style="margin-top: 8px; background: rgba(56, 189, 248, 0.08); border-color: rgba(56, 189, 248, 0.3);">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <span><strong>🔗 知識庫導覽：</strong> 點擊查看已編織之 Wiki 網絡</span>
-          <span class="badge badge-primary">AGENT.md 規範驅動</span>
+          <span><strong>🔗 完整知識庫：</strong> 請查閱儲存庫根目錄下的 <code>wiki/</code> 資料夾</span>
+          <span class="badge badge-primary">GitHub Pages 即時部署</span>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Navigation & Source Attribution -->
   <footer>
-    <div class="key-hint">
-      <span>快速鍵：</span>
-      <kbd>←</kbd> <kbd>→</kbd> 或 <kbd>Space</kbd> 切換簡報
+    <div id="slideWikiSource" class="wiki-source-tag">
+      📖 知識來源：<span id="wikiSourceText">wiki/01_Overview.md</span>
     </div>
 
     <div class="nav-buttons">
@@ -679,65 +589,219 @@
 
   <script>
     let currentSlide = 1;
-    const totalSlides = document.querySelectorAll('.slide').length;
-
-    document.getElementById('totalSlidesNum').textContent = totalSlides;
+    const totalSlides = 8;
+    const wikiSources = [
+      "wiki/01_Overview.md",
+      "wiki/05_ABM_vs_Equation_Models.md",
+      "wiki/02_Core_Components.md",
+      "wiki/04_Classic_Models.md",
+      "wiki/03_Key_Concepts.md",
+      "wiki/03_Key_Concepts.md",
+      "wiki/06_ABM_vs_LLMAgent.md",
+      "wiki/01_Overview.md"
+    ];
 
     function updatePresentation() {
-      // Update slides active state
       document.querySelectorAll('.slide').forEach((slide, idx) => {
-        const slideIndex = idx + 1;
-        if (slideIndex === currentSlide) {
+        if (idx + 1 === currentSlide) {
           slide.classList.add('active');
         } else {
           slide.classList.remove('active');
         }
       });
 
-      // Update counters & progress
       document.getElementById('currentSlideNum').textContent = currentSlide;
-      const progressPercent = (currentSlide / totalSlides) * 100;
-      document.getElementById('progressBar').style.width = progressPercent + '%';
+      document.getElementById('totalSlidesNum').textContent = totalSlides;
+      document.getElementById('progressBar').style.width = ((currentSlide / totalSlides) * 100) + '%';
+      document.getElementById('wikiSourceText').textContent = wikiSources[currentSlide - 1] || "wiki/01_Overview.md";
 
-      // Update buttons state
       document.getElementById('prevBtn').disabled = currentSlide === 1;
       document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
     }
 
-    function nextSlide() {
-      if (currentSlide < totalSlides) {
-        currentSlide++;
-        updatePresentation();
-      }
-    }
+    function nextSlide() { if (currentSlide < totalSlides) { currentSlide++; updatePresentation(); } }
+    function prevSlide() { if (currentSlide > 1) { currentSlide--; updatePresentation(); } }
 
-    function prevSlide() {
-      if (currentSlide > 1) {
-        currentSlide--;
-        updatePresentation();
-      }
-    }
-
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-        nextSlide();
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-        prevSlide();
-      }
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
     });
 
-    // Touch swipe support for mobile
+    // Touch swipe support
     let touchStartX = 0;
     let touchEndX = 0;
-    document.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
+    document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
     document.addEventListener('touchend', e => {
       touchEndX = e.changedTouches[0].screenX;
       if (touchStartX - touchEndX > 50) nextSlide();
       if (touchEndX - touchStartX > 50) prevSlide();
     });
+
+    // Schelling Segregation Model Simulation Engine
+    const canvas = document.getElementById('schellingCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      const gridSize = 35;
+      const cellSize = canvas.width / gridSize;
+      let grid = [];
+      let threshold = 0.30;
+      let running = false;
+      let animId = null;
+
+      function initGrid() {
+        grid = [];
+        for (let r = 0; r < gridSize; r++) {
+          grid[r] = [];
+          for (let c = 0; c < gridSize; c++) {
+            const rand = Math.random();
+            if (rand < 0.45) grid[r][c] = 1; // Red
+            else if (rand < 0.90) grid[r][c] = 2; // Blue
+            else grid[r][c] = 0; // Empty
+          }
+        }
+        drawGrid();
+        updateStats();
+      }
+
+      function drawGrid() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let r = 0; r < gridSize; r++) {
+          for (let c = 0; c < gridSize; c++) {
+            if (grid[r][c] === 1) {
+              ctx.fillStyle = '#f87171'; // Red agent
+              ctx.fillRect(c * cellSize + 0.5, r * cellSize + 0.5, cellSize - 1, cellSize - 1);
+            } else if (grid[r][c] === 2) {
+              ctx.fillStyle = '#38bdf8'; // Blue agent
+              ctx.fillRect(c * cellSize + 0.5, r * cellSize + 0.5, cellSize - 1, cellSize - 1);
+            } else {
+              ctx.fillStyle = '#0f172a'; // Empty space
+              ctx.fillRect(c * cellSize + 0.5, r * cellSize + 0.5, cellSize - 1, cellSize - 1);
+            }
+          }
+        }
+      }
+
+      function getNeighbors(r, c) {
+        let same = 0;
+        let total = 0;
+        const type = grid[r][c];
+        if (type === 0) return { same: 0, total: 0, satisfied: true, ratio: 1 };
+
+        for (let dr = -1; dr <= 1; dr++) {
+          for (let dc = -1; dc <= 1; dc++) {
+            if (dr === 0 && dc === 0) continue;
+            const nr = (r + dr + gridSize) % gridSize;
+            const nc = (c + dc + gridSize) % gridSize;
+            const neighbor = grid[nr][nc];
+            if (neighbor !== 0) {
+              total++;
+              if (neighbor === type) same++;
+            }
+          }
+        }
+        const satisfied = total === 0 ? true : (same / total) >= threshold;
+        return { same, total, satisfied, ratio: total === 0 ? 1 : (same / total) };
+      }
+
+      function stepSim() {
+        const unhappy = [];
+        const empties = [];
+        let totalAgents = 0;
+        let satisfiedCount = 0;
+        let sumSimilarity = 0;
+
+        for (let r = 0; r < gridSize; r++) {
+          for (let c = 0; c < gridSize; c++) {
+            if (grid[r][c] === 0) {
+              empties.push({ r, c });
+            } else {
+              totalAgents++;
+              const info = getNeighbors(r, c);
+              sumSimilarity += info.ratio;
+              if (info.satisfied) {
+                satisfiedCount++;
+              } else {
+                unhappy.push({ r, c });
+              }
+            }
+          }
+        }
+
+        document.getElementById('statSatisfied').textContent = Math.round((satisfiedCount / totalAgents) * 100) + '%';
+        document.getElementById('statSegregation').textContent = Math.round((sumSimilarity / totalAgents) * 100) + '%';
+
+        if (unhappy.length === 0 || empties.length === 0) {
+          pauseSim();
+          return;
+        }
+
+        // Relocate a batch of unhappy agents to random empty spots
+        const moves = Math.min(unhappy.length, 25);
+        for (let i = 0; i < moves; i++) {
+          const uIdx = Math.floor(Math.random() * unhappy.length);
+          const eIdx = Math.floor(Math.random() * empties.length);
+          const u = unhappy.splice(uIdx, 1)[0];
+          const e = empties.splice(eIdx, 1)[0];
+
+          grid[e.r][e.c] = grid[u.r][u.c];
+          grid[u.r][u.c] = 0;
+          empties.push(u);
+        }
+
+        drawGrid();
+        if (running) animId = requestAnimationFrame(stepSim);
+      }
+
+      function updateStats() {
+        let totalAgents = 0;
+        let satisfiedCount = 0;
+        let sumSimilarity = 0;
+        for (let r = 0; r < gridSize; r++) {
+          for (let c = 0; c < gridSize; c++) {
+            if (grid[r][c] !== 0) {
+              totalAgents++;
+              const info = getNeighbors(r, c);
+              sumSimilarity += info.ratio;
+              if (info.satisfied) satisfiedCount++;
+            }
+          }
+        }
+        document.getElementById('statSatisfied').textContent = Math.round((satisfiedCount / totalAgents) * 100) + '%';
+        document.getElementById('statSegregation').textContent = Math.round((sumSimilarity / totalAgents) * 100) + '%';
+      }
+
+      function startSim() {
+        if (!running) {
+          running = true;
+          document.getElementById('startBtn').textContent = "暫停模擬";
+          stepSim();
+        } else {
+          pauseSim();
+        }
+      }
+
+      function pauseSim() {
+        running = false;
+        cancelAnimationFrame(animId);
+        document.getElementById('startBtn').textContent = "開始模擬";
+      }
+
+      function resetSim() {
+        pauseSim();
+        initGrid();
+      }
+
+      document.getElementById('thresholdSlider').addEventListener('input', (e) => {
+        threshold = e.target.value / 100;
+        document.getElementById('thresholdVal').textContent = e.target.value + '%';
+        updateStats();
+      });
+
+      window.startSim = startSim;
+      window.resetSim = resetSim;
+
+      initGrid();
+    }
 
     updatePresentation();
   </script>

@@ -83,3 +83,13 @@
   5. **Slide 7**：強化「極簡數值規則 vs 語言智慧大腦」的邊界警示，符合防混淆紅線要求。
 - **審查結論**：✅ **完全通過！** 零基礎讀者可毫無障礙理解，且完全錨定於 `wiki/` 知識庫。
 - **後續行動**：執行 Git Commit，進入 Loop 3 生成最終 HTML 簡報。
+
+
+## [Loop 3 - 終審自檢] HTML 簡報生成與渲染自檢 (Check 3 - Rendering & Integrity)
+- **審查標的**：`index.html` (依據通過審查的 `outline.md` 與 `template.html` 產生)
+- **審查項目與結果**：
+  1. **投影片頁數檢查**：✅ 嚴格符合 8 頁規格（Slide 1 至 Slide 8），無多餘或遺漏頁面。
+  2. **底部 Wiki 來源標註**：✅ 頁面底部整合動態連動模組，隨投影片切換自動顯示精確來源（如 Slide 1 顯示 `wiki/01_Overview.md`、Slide 4 顯示 `wiki/04_Classic_Models.md`、Slide 7 顯示 `wiki/06_ABM_vs_LLMAgent.md`）。
+  3. **謝林隔離模型 Canvas 模擬器實裝**：✅ 於 Slide 4 成功實裝原生 HTML5 Canvas 模擬引擎，支援 35x35 網格、即時調整同類門檻滑桿（預設 30%）、即時統計滿意度與隔離指數，並具備開始/暫停與重置按鈕。
+  4. **JavaScript 與排版溢位排查**：✅ 語法檢查通過無報錯；CSS 具備響應式網格與 `overflow: hidden` 保護機制，杜絕文字溢位與排版崩塌。
+- **結論**：✅ **完全通過！** 執行 Git Commit，完成三層迴圈全部歷程。
