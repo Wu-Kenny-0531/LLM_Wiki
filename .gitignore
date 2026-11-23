@@ -1,0 +1,7 @@
+# Obsidian workspace layout
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# System files
+Thumbs.db
+.DS_Store
