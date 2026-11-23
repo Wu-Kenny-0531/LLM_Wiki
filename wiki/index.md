@@ -11,10 +11,17 @@
   - **Generative Agents: Interactive Simulacra of Human Behavior**
   - 開創性貢獻：提出記憶串流、反思機制與規劃反應架構，於 Smallville 小鎮成功模擬出情人節派對自主籌辦等社會湧現行為。
 
+- [[2023_Xi_LLM-Based-Agents-Survey]] — *Xi et al. (Fudan University, arXiv 2023)*
+  - **The Rise and Potential of Large Language Model Based Agents: A Survey**
+  - 全景性貢獻：系統化確立 Brain-Perception-Action 三元架構、代理人社會四大特徵（開放/持久/具身/組織）與多代理人協同博弈機制。
+
 ---
 
 ## 🧠 核心概念與機制 (Concepts & Mechanisms)
 
+- [[Agent-Architecture-Tripartite]] — 代理人經典三元架構：大腦（決策與記憶）、感知（多模態輸入）、行動（工具與具身操作）。
+- [[Agent-Society-Properties]] — 代理人社會四大特徵：開放性 (Open)、持久性 (Persistent)、情境具身性 (Situated)、組織秩序性 (Organized)。
+- [[Multi-Agent-Coordination]] — 多代理人協同：有序分工（SOP）、無序腦力激盪（投票）與對抗辯論（消除幻覺）。
 - [[Generative-Agents]] — 生成式代理人：定義、認知三元組與相較於傳統規則型/強化學習代理人之優勢。
 - [[Memory-Stream]] — 記憶串流：自然語言記憶條目、指數時間衰減、重要度評估與三維檢索演算法。
 - [[Reflection-Mechanism]] — 反思機制：從低階觀察抽象為高階信念的反思樹（Reflection Tree）建構流程。

@@ -23,3 +23,10 @@
 - 新增概念頁：`wiki/concepts/Generative-Agents.md`、`wiki/concepts/Memory-Stream.md`、`wiki/concepts/Reflection-Mechanism.md`、`wiki/concepts/Social-Simulation-ABM.md`
 - 新增綜述頁：`wiki/synthesis/LLM-Agent-Based-Modeling.md`
 - 更新全域索引：`wiki/index.md`
+
+
+## [2026-11-23] ingest | [[2023_Xi_LLM-Based-Agents-Survey]] - 消化復旦大學全景綜述論文，建立三元架構、社會特徵與多代理人協同機制
+- 新增論文頁：`wiki/papers/2023_Xi_LLM-Based-Agents-Survey.md`
+- 新增概念頁：`wiki/concepts/Agent-Architecture-Tripartite.md`、`wiki/concepts/Agent-Society-Properties.md`、`wiki/concepts/Multi-Agent-Coordination.md`
+- 更新綜述頁：`wiki/synthesis/LLM-Agent-Based-Modeling.md`
+- 更新全域索引：`wiki/index.md`
