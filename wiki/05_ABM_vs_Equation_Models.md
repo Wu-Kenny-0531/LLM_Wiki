@@ -1,0 +1,6 @@
+# 05. ABM vs. 傳統方程式與統計模型 (ABM vs. Equation-Based Models)
+
+## 建模哲學對比
+- **傳統巨觀方法 (Top-down)**：通常以代表性個體（Representative Agent）與連續聚合變量（如總量微分方程）為核心 [Source 1]。
+- **ABM 計算實驗室 (Bottom-up)**：透過個別代理人的微觀異質決策還原宏觀真實動態 [Source 1]。
+- *(詳細橫向矩陣隨後續文獻逐步擴充)*
