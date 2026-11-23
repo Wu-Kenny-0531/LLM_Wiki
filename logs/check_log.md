@@ -39,3 +39,12 @@
   1. `[Source 3]` 引用標記：✅ 全部新增段落均已打上 `[Source 3]` 標籤。
   2. 現代 LLM Agent 混淆排查：✅ `01` 到 `05` 維持純粹複雜適應系統（CAS）與傳統鳥群/網格物理模擬，無任何 LLM 混入；`06` 清晰劃分了「空間規則湧現」與「語用語意湧現」的層級差異。
 - **結論**：審查通過，執行 Git Commit。
+
+
+## [Loop 1 - Round 4] Ingest Source 4 (`sources/source_4.md`)
+- **整合範圍**：`wiki/01_Overview.md` ~ `wiki/06_ABM_vs_LLMAgent.md`
+- **知識重點**：個體異質性（Heterogeneity）生活比喻（股市多空分歧才能撮合）、有限理性（Bounded Rationality）、滿意化原則（Satisficing vs Maximizing）、糖原模型（Sugarscape）湧現財富不平等。
+- **[檢查點 1 - 邊界審查結果]**：
+  1. `[Source 4]` 引用標記：✅ 全部新增段落均已打上 `[Source 4]` 標籤。
+  2. 現代 LLM Agent 混淆排查：✅ `01` 到 `05` 專注於有限理性理論（Herbert Simon）與傳統 Sugarscape 代謝參數，未混入現代 LLM Agent 機制；`06` 清楚區隔了「靜態數值參數異質性」vs「自然語言人設/記憶異質性」。
+- **結論**：審查通過，執行 Git Commit。
