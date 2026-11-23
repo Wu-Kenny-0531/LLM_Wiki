@@ -48,3 +48,12 @@
   1. `[Source 4]` 引用標記：✅ 全部新增段落均已打上 `[Source 4]` 標籤。
   2. 現代 LLM Agent 混淆排查：✅ `01` 到 `05` 專注於有限理性理論（Herbert Simon）與傳統 Sugarscape 代謝參數，未混入現代 LLM Agent 機制；`06` 清楚區隔了「靜態數值參數異質性」vs「自然語言人設/記憶異質性」。
 - **結論**：審查通過，執行 Git Commit。
+
+
+## [Loop 1 - Round 5] Ingest Source 5 (`sources/source_5.md`)
+- **整合範圍**：`wiki/01_Overview.md` ~ `wiki/06_ABM_vs_LLMAgent.md`
+- **知識重點**：ABM vs 方程式模型（EBM）全維度矩陣（自頂向下 vs 自底向上、生成式解釋、空間拓撲、路徑依賴）、傳統極簡規則 Agent vs 現代 LLM Agent（如 AutoGPT）之嚴格邊界界定與現代融合。
+- **[檢查點 1 - 邊界審查結果]**：
+  1. `[Source 5]` 引用標記：✅ 全部新增段落均已打上 `[Source 5]` 標籤。
+  2. 現代 LLM Agent 混淆排查：✅ `01` 到 `05` 嚴格恪守傳統科學計算與方程式模型之對比，無任何現代 Agent 溢出；`06` 建立了全維度對比矩陣與邊界紅線警示，徹底杜絕了將 AutoGPT 誤認為傳統 ABM 的學術混淆。
+- **結論**：審查通過，Loop 1 全部 5 輪 Ingest 與邊界檢查圓滿達成！執行 Git Commit。

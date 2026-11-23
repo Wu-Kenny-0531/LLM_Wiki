@@ -16,3 +16,16 @@
 
 ## 克服同質性假設之死穴
 傳統新古典巨觀經濟學以「代表性個體（Representative Agent）」簡化計算，無法解釋 2008 金融海嘯中少數邊緣高槓桿次貸機構如何引發全球骨牌式連鎖違約；ABM 透過直接為數千個異質個體建模，能夠輕易辨識出系統最脆弱的局部斷裂點 [Source 4]。
+
+
+---
+
+## 核心維度綜合對比表 (Comprehensive Comparison Matrix)
+
+| 比較維度 | 傳統方程式模型 (Equation-Based, EBM) | 代理人基模型 (Agent-Based, ABM) |
+| :--- | :--- | :--- |
+| **建模出發點** | **自頂向下 (Top-down)**：直接定義宏觀變量方程式（如 $dI/dt = \beta SI$）[Source 5] | **自底向上 (Bottom-up)**：對每個微觀個體的決策規則與互動編程 [Source 5] |
+| **微觀個體假設** | 假設同質化（Homogeneous）或代表性個體 [Source 5] | 充分保留個體異質性（年齡、偏好、資源分佈）[Source 5] |
+| **空間與交互拓撲** | 假設「完美均勻混合（Well-mixed）」[Source 5] | 嵌入於離散網格、幾何空間或複雜社交網路中 [Source 5] |
+| **解釋機制** | **相關性與宏觀約束**（給出統計趨勢，難以回答微觀因果）[Source 5] | **生成式因果解釋（Generative Explanation）**：以微觀互動還原湧現過程 [Source 5] |
+| **突變與相變** | 難以處理非線性斷裂與相變臨界點 [Source 5] | 天然擅長捕捉骨牌連鎖效應與臨界雪崩（Tipping Points）[Source 5] |

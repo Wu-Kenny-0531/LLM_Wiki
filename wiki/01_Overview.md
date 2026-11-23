@@ -22,3 +22,7 @@ ABM 之所以超越傳統還原論（Reductionism），在於它深刻掌握了�
 
 ## 告別「同質理性人」假說
 傳統社會科學假設「所有人皆同質且完全理性」，而 ABM 的根本革命在於承認人性的「異質性（Heterogeneity）」與「有限理性（Bounded Rationality）」——每個人擁有的資訊是不完整的、計算力是有限的，決策是依據滿意化（Satisficing）而非全域最佳化 [Source 4]。
+
+
+## 生成式解釋 (Generative Explanation)
+Joshua Epstein 著名的學術宣言「*如果你無法培育它，你就沒有解釋它（If you didn't grow it, you didn't explain it）*」道出了 ABM 的本質哲學：真正的科學解釋不在於找出兩個統計變量之間的靜態相關係數，而在於透過代理人的微觀互動，在計算機中動態「培育」出與真實世界相符的宏觀現象 [Source 5]。
